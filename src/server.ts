@@ -1,11 +1,15 @@
 import app from './app';
-import { config } from 'dotenv';
 import { ENV } from './config/environment';
+import { connectDB } from './config/database';
+import { initTables } from './config/initTables';
 
-config();
+const startServer = async () => {
+  await connectDB();
+  await initTables();
 
-const port = ENV.PORT || 5000;
+  app.listen(ENV.PORT, () => {
+    console.log(`Server running on port ${ENV.PORT} 🚀`);
+  });
+};
 
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
-});
+startServer();
