@@ -1,6 +1,5 @@
 import { Router } from 'express';
 import {
-  createUserHandler,
   getUsersHandler,
   getUserHandler,
   updateUserHandler,
@@ -9,8 +8,6 @@ import {
 import { authenticate, authorize } from '../../middlewares/auth.middleware';
 
 const router = Router();
-
-router.post('/signup', createUserHandler); // signup / create user
 
 router.get('/', authenticate, authorize('admin'), getUsersHandler);
 router.get(

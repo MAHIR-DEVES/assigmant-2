@@ -1,11 +1,11 @@
 import bcrypt from 'bcrypt';
 import {
-  createUserInDB,
   getAllUsers,
   getUserById,
   updateUserById,
   deleteUserById,
 } from '../../repositories/user.repository';
+import { createUserInDB } from '../auth/auth.service';
 
 export const createUser = async (data: {
   name: string;
